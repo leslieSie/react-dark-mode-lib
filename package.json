@@ -1,6 +1,6 @@
 {
-  "name": "react-darkMode",
-  "version": "1.0.0",
+  "name": "react-dark-mode-lib",
+  "version": "1.0.1",
   "description": "Base on CSS mix-blend-mode Proerty,quickly to generate dark mode",
   "author": "leslieSie",
   "license": "MIT",
@@ -8,6 +8,7 @@
   "main": "dist/index.js",
   "module": "dist/index.modern.js",
   "source": "src/index.js",
+  "keywords": ["react", "dark-mode", "javascript"],
   "engines": {
     "node": ">=10"
   },

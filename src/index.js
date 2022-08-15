@@ -1,9 +1,9 @@
 import React, { useState, useEffect, Fragment } from 'react'
-import styles from './styles.module.css'
 import ReactDOM from 'react-dom'
 import { isObject } from 'lodash'
+import { animateCSS } from './utils.js'
 
-export const DarkModeComponent = (props) => {
+export default DarkModeComponent = (props) => {
   const [init, setInit] = useState(false)
   const {
     visible,
@@ -29,70 +29,18 @@ export const DarkModeComponent = (props) => {
     document.head.appendChild(linkElement)
   }
 
-  const generateGlobalCSS = () => {
-    return `
-     
-      @keyframes fadeIn {
-        from {
-          background: black
-        }
-        to {
-          background: white
-        }
-      }
-
-      @keyframes scaleIn {
-        from {
-          transform: scale(0)
-        }
-        to {
-          transform: scale(5)
-        }
-      }
-
-      @keyframes fadeOut {
-        from {
-          background: white
-        }
-        to {
-          background: black
-        }
-      }
-
-      @keyframes scaleOut {
-        from {
-          transform: scale(5)
-        }
-        to {
-          transform: scale(0)
-        }
-      }
-
-      .dark-mode-layer-animate-active {
-        animation: ${useAnimateName}In ${amimateTime / 1000}s
-      }
-
-      .dark-mode-layer-animate-leave {
-        animation: ${useAnimateName}Out ${amimateTime / 1000}s
-      }
-
-      .animate-center {
-        transform-origin: center center
-      }
-    `
-  }
-
   const hocLayer = (Lay) => {
+    const className = ['dark-mode-layer'].join(' ')
     class gl extends React.Component {
       render() {
         return (
-          <Lay
-            id={darkModelLayerId}
-            styles={styles}
-            {...{
-              changeLayerStatus
-            }}
-          ></Lay>
+          <div id={darkModelLayerId} className={className}>
+            <Lay
+              {...{
+                changeLayerStatus
+              }}
+            ></Lay>
+          </div>
         )
       }
     }
@@ -101,25 +49,22 @@ export const DarkModeComponent = (props) => {
 
   const changeLayerStatus = (DOM, status) => {
     if (status === 'show') {
-      DOM.classList.remove(styles.hide)
+      DOM.classList.remove('hide')
     } else if (status === 'hidden') {
-      DOM.classList.add(styles.hide)
+      DOM.classList.add('hide')
     }
   }
 
   // generate background
   const GenerateBackground = () => {
     return (
-      <div
-        id='dark-mode-background'
-        className={styles.darkModeBackground}
-      ></div>
+      <div id='dark-mode-background' className={'dark-mode-background'}></div>
     )
   }
 
   // default Layer
   const GenerateDefaultLayer = () => {
-    const className = [styles.darkModeLayer].join(' ')
+    const className = ['dark-mode-layer'].join(' ')
     return <div id={darkModelLayerId} className={className}></div>
   }
 
@@ -158,37 +103,20 @@ export const DarkModeComponent = (props) => {
   }
 
   // hook animate start method
-  const animateStart = () => {
+  const animateStartHook = () => {
     const layerDOM = document.getElementById('dark-mode-layer')
     if (visible) {
       switch (useAnimateName) {
         case 'scale':
           layerDOM.classList.add('animate-center')
-          layerDOM.classList.add(styles.cicle)
-          break
-      }
-    } else {
-      switch (useAnimateName) {
-        case 'scale':
-          layerDOM.classList.add(styles.cicle)
+          // layerDOM.classList.add('cicle')
           break
       }
     }
   }
 
   // hook animate end method
-  const animateEnd = () => {
-    const layerDOM = document.getElementById('dark-mode-layer')
-    if (visible) {
-      setTimeout(() => {
-        switch (useAnimateName) {
-          case 'scale':
-            layerDOM.classList.remove(styles.cicle)
-            break
-        }
-      }, amimateTime - 100)
-    }
-  }
+  const animateEndHook = () => {}
 
   // init
   useEffect(() => {
@@ -198,7 +126,12 @@ export const DarkModeComponent = (props) => {
       createEle.setAttribute('id', 'dark-mode-component')
       const firstChild = body.firstElementChild
       body.insertBefore(createEle, firstChild)
-      isUseAnimate && addStyle(generateGlobalCSS())
+      addStyle(
+        animateCSS({
+          useAnimateName,
+          amimateTime
+        })
+      )
     }
   }, [])
 
@@ -208,21 +141,21 @@ export const DarkModeComponent = (props) => {
     body.classList[operate](activeSymbol)
     const darkmodeComponentDOM = document.getElementById('dark-mode-component')
     if (visible) {
-      darkmodeComponentDOM.classList.remove(styles.hide)
+      darkmodeComponentDOM.classList.remove('hide')
       renderLayer()
     } else {
       if (isUseAnimate) {
         setTimeout(() => {
-          darkmodeComponentDOM.classList.add(styles.hide)
-        }, amimateTime - 100)
+          darkmodeComponentDOM.classList.add('hide')
+        }, amimateTime)
       } else {
-        darkmodeComponentDOM.classList.add(styles.hide)
+        darkmodeComponentDOM.classList.add('hide')
       }
     }
     if (isUseAnimate && init) {
-      animateStart()
+      animateStartHook()
       generateAnimateClass(visible)
-      animateEnd()
+      animateEndHook()
     }
     !init && setInit(true)
   }, [visible])
