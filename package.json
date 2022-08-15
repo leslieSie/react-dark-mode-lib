@@ -4,7 +4,7 @@
   "description": "Base on CSS mix-blend-mode Proerty,quickly to generate dark mode",
   "author": "leslieSie",
   "license": "MIT",
-  "repository": "leslieSie/react-darkMode",
+  "repository": "leslieSie/react-dark-mode-lib",
   "main": "dist/index.js",
   "module": "dist/index.modern.js",
   "source": "src/index.js",
