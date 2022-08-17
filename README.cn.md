@@ -1,11 +1,11 @@
 # react-dark-mode-lib
-基于react，能够快速和灵活的创建dark mode的库
+基于react，能够快速和灵活的创建暗黑主题的库
 
 [TOC]
 
 ### 为什么选择?
 
-该类库能够让开发者优雅，快速，灵活的添加dark mode 功能.同时在原有的基础上支持了组件自定义layer层
+该类库能够让开发者优雅，快速，灵活的添加暗黑主题功能.同时在原有的基础上支持了组件自定义layer层
 
 
 
@@ -37,7 +37,7 @@ const App = () => {
 }
 ```
 
-参数**visible**是毕传的. 其他参数的用法如下表所示
+参数**visible**是必传的. 其他参数的用法如下表所示
 
 |     参数      | 是否为空  |           默认值           |        类型         |        描述        |
 | :---------: | :---: | :---------------------: | :---------------: | :--------------: |
@@ -46,6 +46,18 @@ const App = () => {
 |  isAnimate  | true  |          true           |      Boolean      |      是否使用动画      |
 |   visible   | false |                         |      Boolean      | 打开/关闭dark mode 层 |
 |    layer    | true  | Default Layer Component |  React Component  | 自定义 dark mode  层 |
+
+
+
+### 支持样式隔离
+
+如果你需要对特定元素进行样式修改，可以直接对元素进行样式隔离，只需要对样式添加属性:
+
+```css
+isolation: isolate
+```
+
+添加之后，你就可以对元素进行自定义
 
 
 

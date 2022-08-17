@@ -49,6 +49,16 @@ parameter **visible** is required. Other parameter usage see below table:
 
 
 
+### Support Isolate CSS
+
+If you want to change DOM CSS, you need to add CSS Property to the DOM which you want to change. Like this:
+
+```css
+isolation: isolate 
+```
+
+
+
 ### Tips:
 
 layer parameter **allow React Component Not JSX,** Because library inner package your Component ,add Layer Dom outer
