@@ -1,6 +1,5 @@
 import React, { useState, useEffect, Fragment } from 'react'
 import ReactDOM from 'react-dom'
-import { isObject } from 'lodash'
 import { animateCSS } from './utils.js'
 
 export default DarkModeComponent = (props) => {
@@ -70,7 +69,7 @@ export default DarkModeComponent = (props) => {
 
   // custom layer
   const isCustomLayer = () => {
-    return isObject(layer)
+    return layer
   }
 
   const changeAnimate = (DOM, visible) => {
@@ -153,9 +152,11 @@ export default DarkModeComponent = (props) => {
       }
     }
     if (isUseAnimate && init) {
-      animateStartHook()
-      generateAnimateClass(visible)
-      animateEndHook()
+      setTimeout(() => {
+        animateStartHook()
+        generateAnimateClass(visible)
+        animateEndHook()
+      }, 0)
     }
     !init && setInit(true)
   }, [visible])

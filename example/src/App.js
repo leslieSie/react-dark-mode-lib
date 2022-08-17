@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
 
-import DarkModeComponent from 'react-dark-mode-lib/dist/index.js'
+import DarkModeComponent from 'react-dark-mode-lib'
 // import 'react-dark-mode-lib/dist/index.css'
+// const DarkModeComponent = require('react-dark-mode-lib/dist/index.modern')
 
 const App = () => {
   const [visible, setVisible] = useState(false)
@@ -35,11 +36,11 @@ const App = () => {
         {visible ? 'Open' : 'Close'}
       </button>
       <DarkModeComponent
-        animateName='scale'
+        animateName='fade'
         amimateTime={800}
         isAnimate={true}
         visible={visible}
-        layer={CustomLayer}
+        // layer={CustomLayer}
       />
     </>
   )

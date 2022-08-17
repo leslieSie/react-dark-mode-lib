@@ -1,19 +1,23 @@
 {
   "name": "react-dark-mode-lib",
-  "version": "1.0.1",
+  "version": "1.2.0",
   "description": "Base on CSS mix-blend-mode Proerty,quickly to generate dark mode",
   "author": "leslieSie",
   "license": "MIT",
   "repository": "leslieSie/react-dark-mode-lib",
+  "module": "dist/index.js",
   "main": "dist/index.js",
-  "module": "dist/index.modern.js",
   "source": "src/index.js",
-  "keywords": ["react", "dark-mode", "javascript"],
+  "keywords": [
+    "react",
+    "dark-mode",
+    "javascript"
+  ],
   "engines": {
     "node": ">=10"
   },
   "scripts": {
-    "build": "microbundle-crl --globals react=React --compress --format modern,cjs",
+    "build": "rm -rf /dist & microbundle-crl --compress --format modern,cjs",
     "start": "microbundle-crl watch --no-compress --format modern,cjs",
     "prepare": "run-s build",
     "test": "run-s test:unit test:lint test:build",
@@ -25,7 +29,8 @@
     "deploy": "gh-pages -d example/build"
   },
   "peerDependencies": {
-    "react": "^16.0.0"
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1"
   },
   "devDependencies": {
     "babel-eslint": "^10.0.3",
@@ -50,11 +55,5 @@
   },
   "files": [
     "dist"
-  ],
-  "dependencies": {
-    "animate.css": "^4.1.1",
-    "lodash": "^4.17.21",
-    "react-addons-css-transition-group": "^15.6.2",
-    "react-transition-group": "^4.4.5"
-  }
+  ]
 }
