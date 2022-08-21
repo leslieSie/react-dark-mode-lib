@@ -39,13 +39,13 @@ const App = () => {
 
 参数**visible**是必传的. 其他参数的用法如下表所示
 
-|     参数      | 是否为空  |           默认值           |        类型         |        描述        |
-| :---------: | :---: | :---------------------: | :---------------: | :--------------: |
-| animateName | true  |          fade           | 'fade' \| 'scale' |       动画名称       |
-| amimateTime | true  |           500           |      Number       |      动画执行时间      |
-|  isAnimate  | true  |          true           |      Boolean      |      是否使用动画      |
-|   visible   | false |                         |      Boolean      | 打开/关闭dark mode 层 |
-|    layer    | true  | Default Layer Component |  React Component  | 自定义 dark mode  层 |
+|     参数      | 是否为空  | 默认值  |        类型         |        描述        |
+| :---------: | :---: | :--: | :---------------: | :--------------: |
+| animateName | true  | fade | 'fade' \| 'scale' |       动画名称       |
+| amimateTime | true  | 500  |      Number       |      动画执行时间      |
+|  isAnimate  | true  | true |      Boolean      |      是否使用动画      |
+|   visible   | false |      |      Boolean      | 打开/关闭dark mode 层 |
+|    layer    | true  |      |        JSX        | 自定义 dark mode  层 |
 
 
 
@@ -57,17 +57,22 @@ const App = () => {
 isolation: isolate
 ```
 
-添加之后，你就可以对元素进行自定义
+如果某些元素不需要设置为黑色的主题，而需要保持原有的CSS 样式，你只需要添加如下的样式
+
+```css
+isolation: isolate;
+mix-blend-mode: difference;
+```
 
 
 
 ### 提示:
 
-layer 参数允许传入组件而非JSX,因为类库内部会打包你传入的组件，并将组件外层套上一层与layer层相关的DOM节点(相当于是高阶组件)
+layer参数传入的JSX必须最外层为Fragment，因为传入的参数会被解析成为独立的元素直接插入，具体详见示例代码
 
 
 
-如果你想了解更多的例子, 你可以从文件夹[example](https://github.com/leslieSie/react-dark-mode-lib)中获取更多的代码
+如果你想了解更多的例子, 你可以从文件夹[example](https://github.com/leslieSie/react-dark-mode-lib/tree/main/example)中获取更多的代码
 
 
 

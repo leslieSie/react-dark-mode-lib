@@ -37,7 +37,7 @@ const App = () => {
 }
 ```
 
-parameter **visible** is required. Other parameter usage see below table:
+parameter **visible** is required. Other parameter usage view below table:
 
 |  parameter  | Allow Empty |      Default Value      |       Type        |          Description          |
 | :---------: | :---------: | :---------------------: | :---------------: | :---------------------------: |
@@ -57,15 +57,22 @@ If you want to change DOM CSS, you need to add CSS Property to the DOM which you
 isolation: isolate 
 ```
 
+If exist some DOM elements unwant use dark mode CSS, you sholud add some CSS styles.Such as:
+
+```css
+isolation: isolate;
+mix-blend-mode: difference;
+```
+
 
 
 ### Tips:
 
-layer parameter **allow React Component Not JSX,** Because library inner package your Component ,add Layer Dom outer
+layer parameter request Fragment outsidemost.
 
 
 
-If you want to know more examples, you can view the code below the foler which named [example](https://github.com/leslieSie/react-dark-mode-lib)
+If you want to know more examples, you can view the code below the foler which named [example](https://github.com/leslieSie/react-dark-mode-lib/tree/main/example)
 
 
 
