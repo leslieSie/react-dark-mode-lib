@@ -1,10 +1,31 @@
 export const animateCSS = (animateConfig = {}) => {
   const { useAnimateName, amimateTime } = animateConfig
   return `
+    .dark-mode-full-view {
+      width: 100vw;
+      height: 100vh;
+    }
+
+    .dark-mode-full-view-percent {
+      width: 100%;
+      height: 100%;
+    }
+
+    .dark-mode-absolute {
+      position: absolute;
+    }
+
+    .dark-mode-relation {
+      position: relative;
+    }
+
+    .allow-component-operate {
+      pointer-events: unset;
+      position: absolute;
+    }
+
     .dark-mode-layer {
         position: fixed;
-        width: 100vw;
-        height: 100vh;
         background: white;
         mix-blend-mode: difference;
         z-index: 100;
@@ -19,8 +40,8 @@ export const animateCSS = (animateConfig = {}) => {
         position: fixed;
     }
     
-    .hide {
-        display: none;
+    .dark-mode-hide {
+        display: none !important;
     }
     
     .backgroundWhite {
@@ -31,7 +52,7 @@ export const animateCSS = (animateConfig = {}) => {
         background: black;
     }
     
-    .cicle {
+    .dark-mode-cicle {
         border-radius: 50%;
     }
     @keyframes fadeIn {

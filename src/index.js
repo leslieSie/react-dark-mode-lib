@@ -29,11 +29,11 @@ export default DarkModeComponent = (props) => {
   }
 
   const hocLayer = (Lay) => {
-    const className = ['dark-mode-layer'].join(' ')
+    // const className = ['dark-mode-layer', 'dark-mode-full-view'].join(' ')
     class gl extends React.Component {
       render() {
         return (
-          <div id={darkModelLayerId} className={className}>
+          <div id={`${darkModelLayerId}-custom`}>
             <Lay
               {...{
                 changeLayerStatus
@@ -48,9 +48,9 @@ export default DarkModeComponent = (props) => {
 
   const changeLayerStatus = (DOM, status) => {
     if (status === 'show') {
-      DOM.classList.remove('hide')
+      DOM.classList.remove('dark-mode-hide')
     } else if (status === 'hidden') {
-      DOM.classList.add('hide')
+      DOM.classList.add('dark-mode-hide')
     }
   }
 
@@ -63,7 +63,7 @@ export default DarkModeComponent = (props) => {
 
   // default Layer
   const GenerateDefaultLayer = () => {
-    const className = ['dark-mode-layer'].join(' ')
+    const className = ['dark-mode-layer', 'dark-mode-full-view'].join(' ')
     return <div id={darkModelLayerId} className={className}></div>
   }
 
@@ -93,10 +93,11 @@ export default DarkModeComponent = (props) => {
     const HocLayer = hocLayer(layer)
     const darkModeLayderDom = document.querySelector('#dark-mode-component')
     ReactDOM.render(
-      <>
-        {isCustomLayer() ? <HocLayer /> : <GenerateDefaultLayer />}
+      <div className='dark-mode-relation'>
+        <GenerateDefaultLayer />
         <GenerateBackground />
-      </>,
+        {isCustomLayer() ? <HocLayer /> : null}
+      </div>,
       darkModeLayderDom
     )
   }
@@ -108,7 +109,7 @@ export default DarkModeComponent = (props) => {
       switch (useAnimateName) {
         case 'scale':
           layerDOM.classList.add('animate-center')
-          // layerDOM.classList.add('cicle')
+          // layerDOM.classList.add('dark-mode-cicle')
           break
       }
     }
@@ -140,15 +141,20 @@ export default DarkModeComponent = (props) => {
     body.classList[operate](activeSymbol)
     const darkmodeComponentDOM = document.getElementById('dark-mode-component')
     if (visible) {
-      darkmodeComponentDOM.classList.remove('hide')
+      darkmodeComponentDOM.classList.remove('dark-mode-hide')
       renderLayer()
     } else {
       if (isUseAnimate) {
+        const layerDom = document.getElementById('dark-mode-layer-custom')
+        for (let i = 0; i < (layerDom ? layerDom.children : []).length; i++) {
+          const subDOM = layerDom.children[i]
+          subDOM.classList.add('dark-mode-hide')
+        }
         setTimeout(() => {
-          darkmodeComponentDOM.classList.add('hide')
+          darkmodeComponentDOM.classList.add('dark-mode-hide')
         }, amimateTime)
       } else {
-        darkmodeComponentDOM.classList.add('hide')
+        darkmodeComponentDOM.classList.add('dark-mode-hide')
       }
     }
     if (isUseAnimate && init) {
