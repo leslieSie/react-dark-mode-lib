@@ -13,7 +13,8 @@
     "react": "link:../node_modules/react",
     "react-dom": "link:../node_modules/react-dom",
     "react-scripts": "link:../node_modules/react-scripts",
-    "react-dark-mode-lib": "link:.."
+    "react-dark-mode-lib": "link:..",
+    "antd": "link:../node_modules/antd@4.22.6@antd"
   },
   "devDependencies": {
     "@babel/plugin-syntax-object-rest-spread": "^7.8.3"
