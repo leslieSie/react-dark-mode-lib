@@ -1,6 +1,6 @@
 {
   "name": "react-dark-mode-lib",
-  "version": "1.2.1",
+  "version": "1.2.4",
   "description": "Base on CSS mix-blend-mode Proerty,quickly to generate dark mode",
   "author": "leslieSie",
   "license": "MIT",

@@ -1,7 +1,7 @@
 # react-dark-mode-lib
 基于react，能够快速和灵活的创建暗黑主题的库
 
-[TOC]
+
 
 ### 为什么选择?
 
@@ -39,13 +39,14 @@ const App = () => {
 
 参数**visible**是必传的. 其他参数的用法如下表所示
 
-|     参数      | 是否为空  | 默认值  |        类型         |        描述        |
-| :---------: | :---: | :--: | :---------------: | :--------------: |
-| animateName | true  | fade | 'fade' \| 'scale' |       动画名称       |
-| amimateTime | true  | 500  |      Number       |      动画执行时间      |
-|  isAnimate  | true  | true |      Boolean      |      是否使用动画      |
-|   visible   | false |      |      Boolean      | 打开/关闭dark mode 层 |
-|    layer    | true  |      |        JSX        | 自定义 dark mode  层 |
+|      参数       | 是否为空  | 默认值  |        类型         |        描述        |
+| :-----------: | :---: | :--: | :---------------: | :--------------: |
+|  animateName  | true  | fade | 'fade' \| 'scale' |       动画名称       |
+|  amimateTime  | true  | 500  |      Number       |      动画执行时间      |
+|   isAnimate   | true  | true |      Boolean      |      是否使用动画      |
+|    visible    | false |      |      Boolean      | 打开/关闭dark mode 层 |
+|   layerCSS    | true  |      |     CSS style     |   自定义layer CSS   |
+| layerElements | true  |      |        JSX        |    layer层上的元素    |
 
 
 
@@ -68,7 +69,8 @@ mix-blend-mode: difference;
 
 ### 提示:
 
-layer参数传入的JSX必须最外层为Fragment，因为传入的参数会被解析成为独立的元素直接插入，具体详见示例代码
+1. layerElements参数传入的JSX必须最外层为Fragment，因为传入的参数会被解析成为独立的元素直接插入，具体详见示例代码
+
 
 
 

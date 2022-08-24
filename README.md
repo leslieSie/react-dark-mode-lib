@@ -39,13 +39,14 @@ const App = () => {
 
 parameter **visible** is required. Other parameter usage view below table:
 
-|  parameter  | Allow Empty |      Default Value      |       Type        |          Description          |
-| :---------: | :---------: | :---------------------: | :---------------: | :---------------------------: |
-| animateName |    true     |          fade           | 'fade' \| 'scale' |        animation name         |
-| amimateTime |    true     |           500           |      Number       |        animation time         |
-|  isAnimate  |    true     |          true           |      Boolean      |        is use animate         |
-|   visible   |    false    |                         |      Boolean      | open or close dark mode layer |
-|    layer    |    true     | Default Layer Component |  React Component  |    custom dark moke layer     |
+|   parameter   | Allow Empty | Default Value |       Type        |          Description          |
+| :-----------: | :---------: | :-----------: | :---------------: | :---------------------------: |
+|  animateName  |    true     |     fade      | 'fade' \| 'scale' |        animation name         |
+|  amimateTime  |    true     |      500      |      Number       |        animation time         |
+|   isAnimate   |    true     |     true      |      Boolean      |        is use animate         |
+|    visible    |    false    |               |      Boolean      | open or close dark mode layer |
+|   layerCSS    |    true     |               |     CSS style     |       custom layer CSS        |
+| layerElements |    true     |               |        JSX        |       elements on layer       |
 
 
 
@@ -68,7 +69,8 @@ mix-blend-mode: difference;
 
 ### Tips:
 
-layer parameter request Fragment outsidemost.
+1. layerElements parameter type of JSX and outside must React Fragment, Becase Elements will be parse independent element append to layer.
+
 
 
 

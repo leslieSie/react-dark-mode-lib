@@ -20,18 +20,7 @@ const App = () => {
   const articleImageCssString = articleImageArray.join(' ')
   const btnCssString = btnArray.join(' ')
 
-  const CustomLayer = () => {
-    const dateCss = {
-      position: 'absolute',
-      right: '30px',
-      bottom: '20px'
-    }
-
-    const aboutCSS = {
-      position: 'absolute',
-      left: '30px',
-      top: '20px'
-    }
+  const CustomElements = () => {
     return (
       <>
         <Button
@@ -116,7 +105,10 @@ const App = () => {
         amimateTime={800}
         isAnimate={true}
         visible={visible}
-        layer={CustomLayer}
+        layerCSS={{
+          zIndex: 1000
+        }}
+        layerElements={CustomElements}
       />
     </>
   )

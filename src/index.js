@@ -6,7 +6,8 @@ export default DarkModeComponent = (props) => {
   const [init, setInit] = useState(false)
   const {
     visible,
-    layer,
+    layerCSS = {},
+    layerElements,
     amimateTime = 500,
     animateName = 'fade',
     isAnimate
@@ -28,7 +29,7 @@ export default DarkModeComponent = (props) => {
     document.head.appendChild(linkElement)
   }
 
-  const hocLayer = (Lay) => {
+  const hocLayerElements = (Lay) => {
     // const className = ['dark-mode-layer', 'dark-mode-full-view'].join(' ')
     class gl extends React.Component {
       render() {
@@ -64,12 +65,14 @@ export default DarkModeComponent = (props) => {
   // default Layer
   const GenerateDefaultLayer = () => {
     const className = ['dark-mode-layer', 'dark-mode-full-view'].join(' ')
-    return <div id={darkModelLayerId} className={className}></div>
+    return (
+      <div id={darkModelLayerId} className={className} style={layerCSS}></div>
+    )
   }
 
   // custom layer
-  const isCustomLayer = () => {
-    return layer
+  const isLayerElements = (isDefine) => {
+    return isDefine
   }
 
   const changeAnimate = (DOM, visible) => {
@@ -90,13 +93,13 @@ export default DarkModeComponent = (props) => {
 
   // render Layer Function
   const renderLayer = () => {
-    const HocLayer = hocLayer(layer)
+    const HOCLayerElements = hocLayerElements(layerElements)
     const darkModeLayderDom = document.querySelector('#dark-mode-component')
     ReactDOM.render(
       <div className='dark-mode-relation'>
         <GenerateDefaultLayer />
         <GenerateBackground />
-        {isCustomLayer() ? <HocLayer /> : null}
+        {isLayerElements(layerElements) ? <HOCLayerElements /> : null}
       </div>,
       darkModeLayderDom
     )
