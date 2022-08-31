@@ -4,6 +4,7 @@ import { animateCSS } from './utils.js'
 
 export default DarkModeComponent = (props) => {
   const [init, setInit] = useState(false)
+  const [hideTimer, setHideTimer] = useState(null)
   const {
     visible,
     layerCSS = {},
@@ -144,6 +145,10 @@ export default DarkModeComponent = (props) => {
     body.classList[operate](activeSymbol)
     const darkmodeComponentDOM = document.getElementById('dark-mode-component')
     if (visible) {
+      if (hideTimer) {
+        clearTimeout(hideTimer)
+        setHideTimer(null)
+      }
       darkmodeComponentDOM.classList.remove('dark-mode-hide')
       renderLayer()
     } else {
@@ -153,9 +158,11 @@ export default DarkModeComponent = (props) => {
           const subDOM = layerDom.children[i]
           subDOM.classList.add('dark-mode-hide')
         }
-        setTimeout(() => {
+        const timer = setTimeout(() => {
           darkmodeComponentDOM.classList.add('dark-mode-hide')
+          setHideTimer(null)
         }, amimateTime)
+        setHideTimer(timer)
       } else {
         darkmodeComponentDOM.classList.add('dark-mode-hide')
       }

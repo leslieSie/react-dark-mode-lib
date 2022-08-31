@@ -1,4 +1,5 @@
-import React, { useState } from 'react'
+/* eslint-disable jsx-a11y/alt-text */
+import React, { useState, useEffect } from 'react'
 
 import DarkModeComponent from 'react-dark-mode-lib'
 import OpenLight from './open_light.svg'
@@ -7,7 +8,17 @@ import img from './img.jpg'
 import { Button } from 'antd'
 
 const App = () => {
-  const [visible, setVisible] = useState(false)
+  const status = window.localStorage.getItem('dark-mode')
+  const [visible, setVisible] = useState(status === 'true')
+
+  useEffect(() => {
+    // const status = window.localStorage.getItem('dark-mode')
+    // setVisible(status === 'true')
+  }, [])
+
+  useEffect(() => {
+    console.log('监听visible变化: ', visible)
+  }, [visible])
 
   const articleImageArray = ['article-img']
   const btnArray = []
@@ -16,7 +27,6 @@ const App = () => {
     articleImageArray.push('element-isolate')
     btnArray.push('element-isolate')
   }
-
   const articleImageCssString = articleImageArray.join(' ')
   const btnCssString = btnArray.join(' ')
 
@@ -81,6 +91,7 @@ const App = () => {
             className={btnCssString}
             src={visible ? CloseLight : OpenLight}
             onClick={() => {
+              window.localStorage.setItem('dark-mode', !visible)
               setVisible(!visible)
             }}
           />
