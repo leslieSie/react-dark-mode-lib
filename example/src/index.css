@@ -21,3 +21,10 @@ code {
   isolation: isolate;
   mix-blend-mode: difference;
 }
+
+.element-unset {
+  isolation: isolate;
+  mix-blend-mode: unset;
+}
+
+

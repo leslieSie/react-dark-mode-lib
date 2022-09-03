@@ -28,10 +28,14 @@ export const animateCSS = (animateConfig = {}) => {
         position: fixed;
         background: white;
         mix-blend-mode: difference;
-        z-index: 100;
         pointer-events: none
     }
-    
+
+    img, .darkmode-ignore {
+      isolation: isolate;
+      display: inline-block;
+    }
+     
     .dark-mode-background {
         background: white;
         width: 100%;

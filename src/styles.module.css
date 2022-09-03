@@ -6,7 +6,7 @@
   height: 100vh;
   background: white;
   mix-blend-mode: difference;
-  z-index: 100;
+  /* z-index: 100; */
   pointer-events: none
 }
 

@@ -24,8 +24,8 @@ const App = () => {
   const btnArray = []
 
   if (visible) {
-    articleImageArray.push('element-isolate')
-    btnArray.push('element-isolate')
+    // articleImageArray.push('element-isolate')
+    btnArray.push('darkmode-ignore')
   }
   const articleImageCssString = articleImageArray.join(' ')
   const btnCssString = btnArray.join(' ')
@@ -33,21 +33,28 @@ const App = () => {
   const CustomElements = () => {
     return (
       <>
-        <Button
+        <div
+          className={'element-isolate'}
           style={{
             display: 'inline-block',
-            position: 'absolute',
-            top: '10px',
-            left: '10px'
-          }}
-          className={'element-isolate'}
-          type='primary'
-          onClick={() => {
-            window.open('https://github.com/leslieSie')
+            padding: '20px',
+            paddingTop: '10px',
+            background: '#fff'
           }}
         >
-          About Author
-        </Button>
+          <Button
+            style={{
+              display: 'inline-block'
+            }}
+            className={'element-unset'}
+            type='primary'
+            onClick={() => {
+              window.open('https://github.com/leslieSie')
+            }}
+          >
+            About Author
+          </Button>
+        </div>
 
         <Button
           style={{
@@ -116,9 +123,11 @@ const App = () => {
         amimateTime={800}
         isAnimate={true}
         visible={visible}
-        layerCSS={{
-          zIndex: 1000
-        }}
+        layerCSS={
+          {
+            // zIndex: 1000
+          }
+        }
         layerElements={CustomElements}
       />
     </>
